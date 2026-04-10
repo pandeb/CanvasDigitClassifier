@@ -1,3 +1,79 @@
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+}
+
+/* container for the user interaction part */
+#canvascontainer {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+canvas {
+    display: block;
+    background: #343434;
+    cursor: crosshair;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.controls {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2575fc;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* container for the prediction/result part */
+#predictioncontainer {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.results {
+    display: flex;
+    gap: 20px;
+}
+
+.top_result, .other_result {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    background-color: #e6e6e9;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+#first_score, #second_score, #third_score {
+    font-size: 16px;
 }

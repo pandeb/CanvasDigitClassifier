@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Digit Classification</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static', filename='style.css') }}"
+    />
 </head>
 <body>
-    <h1>Digit Classification</h1>
+    <div>
+        <div id="canvascontainer">
+            <h1>Draw a digit (0-9)</h1>
+            <canvas id="canvas" width="140" height="140"></canvas>
+            <div class="controls">
+                <button id="downloadButton">Download Image</button>
+                <button id="clearButton">Clear Canvas</button>
+                <button id="predictButton">Predict Number</button>
+            </div>
+        </div>
+
+        <div id="predictioncontainer">
+            <h2>Prediction</h2>
+            <div class="results">
+                <div class="top_result">
+                    <div id="first_prediction">3</div>
+                    <div id="first_score">69.8 %</div>
+                </div>
+                <div class="other_result">
+                    <div id="second_prediction">2</div>
+                    <div id="second_score">16.0 %</div>
+                </div>
+                <div class="other_result">
+                    <div id="third_prediction">7</div>
+                    <div id="third_score">4.4 %</div>
+                </div>
+            </div>
+        </div> 
+    </div>   
 </body>
 </html>
