@@ -1,4 +1,5 @@
 const LINE_WIDTH = 8;
+const FILE_NAME = "digit.png";
 
 // get the canvas element and 2d drawing context
 const canvas = document.getElementById("canvas");
@@ -49,3 +50,21 @@ canvas.addEventListener("mousemove", (e) => {
   x = newX;
   y = newY;
 });
+
+// functionality for downloading the image
+downloadBtn = document.getElementById("downloadButton");
+downloadBtn.addEventListener("click", saveCanvasAsImage);
+
+function saveCanvasAsImage() {
+  const image = canvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = FILE_NAME;
+  link.click();
+}
+
+// functionality for clearing the canvas
+clearBtn = document.getElementById("clearButton");
+clearBtn.onclick = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
