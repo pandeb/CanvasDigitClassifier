@@ -68,3 +68,29 @@ clearBtn = document.getElementById("clearButton");
 clearBtn.onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
+
+// functionality associated with predict button
+predictBtn = document.getElementById("predictButton")
+predictBtn.addEventListener("click", predictDigit);
+async function predictDigit() {
+  const image = canvas.toDataURL("image/png");
+  fetch("/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user_input: image }),
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      updatePredictionUI(data["predicted_value"]);
+    });
+}
+
+// function to update the UI with prediction scores
+function updatePredictionUI(predictedValue) {
+  const divs_pred = ["first_prediction", "second_prediction", "third_prediction"];
+  const divs_score = ["first_score", "second_score", "third_score"];
+  predictedValue.forEach((result, i) => {
+    document.getElementById(divs_pred[i]).textContent = result.digit;
+    document.getElementById(divs_score[i]).textContent = result.probability + " %";
+  });
+}
