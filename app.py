@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from predict import predict_value
 
 app = Flask(__name__)
 
@@ -9,8 +10,18 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # return dummy data
-    prediction = [{'digit': 3, 'probability': 69.8}, {'digit': 2, 'probability': 16.0}, {'digit': 7, 'probability': 4.4}]
+    # data from the UI
+    data = request.json
+    img_base64 = data['user_input']
+
+    # Remove the prefix from the data if present
+    if "," in img_base64:
+        img_base64 = img_base64.split(",")[1]
+    
+    # prediction using pre_trained model
+    prediction = predict_value(img_base64)
+
+    # return the predicted values(class : probability)
     return jsonify({'predicted_value': prediction})
 
 
