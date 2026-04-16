@@ -77,3 +77,7 @@ button {
 #first_score, #second_score, #third_score {
     font-size: 16px;
 }
+.top_result {
+    background-color: #52b788;
+}
+
