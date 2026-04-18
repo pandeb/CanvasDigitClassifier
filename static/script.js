@@ -67,6 +67,8 @@ function saveCanvasAsImage() {
 clearBtn = document.getElementById("clearButton");
 clearBtn.onclick = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // hide prediction container
+  document.getElementById("predictioncontainer").style.display = "none";
 };
 
 // functionality associated with predict button
@@ -93,4 +95,7 @@ function updatePredictionUI(predictedValue) {
     document.getElementById(divs_pred[i]).textContent = result.digit;
     document.getElementById(divs_score[i]).textContent = result.probability + " %";
   });
+  
+  // Show results container
+  document.getElementById("predictioncontainer").style.display = "flex";
 }
